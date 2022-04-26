@@ -1,5 +1,4 @@
-# backend
-Come avviare il programma:
+# Come avviare il programma:
 1) Installare/Avviare Docker = 
 -docker run -d -p 8080:80 --name my-apache-php-app --rm -v /home/informatica/Desktop/mio-sito:/var/www/html zener79/php:7.4-apache
 -creare la cartella 'mysqldata'
