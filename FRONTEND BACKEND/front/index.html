@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Bootstrap-->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!--jQuery-->
+    <script src="js/jQuery.js"></script>
+
+    <!--Other-->
+    <script src="js/handleEmployees.js"></script>
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--Header-->
+    <div class="container-fluid user-select-none">
+        <div class="row bg-primary pb-1 mb-5">
+            <h1 class="col text-light">Lista Dipendenti</h1>
+            <button type="button" class="col-1 m-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-add">Aggiungi</button>
+            <button type="button" class="col-1 m-2 btn btn-primary" onclick="showMore()" id="show-more">Più
+                dati</button>
+            <!--reappers when showing less info-->
+            <button type="button" class="col-1 m-2 btn btn-primary d-none" onclick="showLess()" id="show-less">Meno
+                dati</button>
+            <!--appears when showing more info-->
+        </div>
+    </div>
+    <!--Body-->
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th class="d-none extra-info">Data di nascita</th>
+                    <th class="d-none extra-info">Data di assunzione</th>
+                    <th class="d-none extra-info">Sesso</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody id="to-fill">
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example" class="mt-5 mb-5 user-select-none">
+            <ul class="pagination pagination-lg justify-content-center">
+                <li class="page-item page-link cursor-point" id="first-page" onclick="loadFirstPage()">First</li>
+                <li class="page-item page-link cursor-point" id="previous-page-arrow" onclick="loadPreviousPage()">&laquo;</li>
+                <li class="page-item page-link cursor-point" id="previous-page" onclick="loadPreviousPage()">0</li>
+                <li class="page-item page-link border-primary border-3" id="current-page">1</li>
+                <li class="page-item page-link cursor-point" id="next-page" onclick="loadNextPage()">2 &raquo;</li>
+                <li class="page-item page-link cursor-point" id="next-page-arrow" onclick="loadNextPage()">&raquo;</li>
+                <li class="page-item page-link cursor-point" id="last-page" onclick="loadLastPage()">∞</li>
+            </ul>
+        </nav>
+
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-add" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Aggiungi un dipendente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!--Form-->
+                    <div class="container">
+                        <table class="table">
+                            <!--Name & last name-->
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Cognome</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" id="input-name">
+                                    </td>
+                                    <td>
+                                        <input type="text" id="input-lastname">
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <table class="table">
+                            <!--Birth date & Hire date-->
+                            <thead>
+                                <tr>
+                                    <th>Data di nascita</th>
+                                    <th>Data di assunzione</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="date" id="input-birthdate">
+                                    </td>
+                                    <td>
+                                        <input type="date" id="input-hiredate">
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <table class="table">
+                            <!--Gender-->
+                            <thead>
+                                <tr>
+                                    <th>Sesso</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="me-2">Maschio</label>
+                                        <input type="radio" value="M" name="gender" id="radio-male" checked>
+                                    </td>
+                                    <td>
+                                        <label class="me-2">Femmina</label>
+                                        <input type="radio" value="F" name="gender" id="radio-female">
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetModalInputs()">Reset</button>
+                    <button type="button" class="btn btn-primary" onclick="saveEmployee()">Aggiungi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
